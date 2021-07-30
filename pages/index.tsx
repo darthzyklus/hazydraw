@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Auth from "../components/Auth";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
@@ -8,6 +9,7 @@ export default function Home() {
         <title>HAZY DRAW</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Auth />
     </div>
   );
 }
