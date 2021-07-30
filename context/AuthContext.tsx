@@ -1,5 +1,11 @@
+import { UserCredentials } from "@supabase/supabase-js";
 import { createContext, useContext, useEffect, useState } from "react";
 import { supabase } from "../utils/supabaseClient";
+
+const appUrl =
+  process.env.NEXT_PUBLIC_VERCEL_ENV === "local"
+    ? "http://localhost:3000"
+    : `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`;
 
 const SIGNED_IN = "SIGNED_IN";
 const SIGNED_OUT = "SIGNED_OUT";
@@ -19,11 +25,10 @@ export const AuthProvider = ({ children }) => {
   };
 
   const signInWithGitHub = async () => {
-    await supabase.auth
-      .signIn({
-        provider: "github",
-      })
-      .catch(console.error);
+    const credentials = { provider: "github" } as Partial<UserCredentials>;
+    const options = { redirectTo: appUrl };
+
+    await supabase.auth.signIn(credentials, options).catch(console.error);
   };
 
   useEffect(() => {
