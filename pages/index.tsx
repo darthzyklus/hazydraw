@@ -1,4 +1,5 @@
 import Head from "next/head";
+
 import Auth from "../components/Auth";
 import styles from "../styles/Home.module.css";
 
