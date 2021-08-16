@@ -11,6 +11,7 @@
     "@chakra-ui/react": "^1.6.5",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
+    "@fontsource/montserrat": "^4.5.1",
     "@supabase/supabase-js": "^1.21.0",
     "framer-motion": "^4",
     "next": "11.0.1",
