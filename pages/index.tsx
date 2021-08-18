@@ -43,7 +43,7 @@ export default function Home() {
             mt={["8", null]}
           >
             <Link
-              href="sing-up"
+              href="sign-up"
               bgColor="purple.500"
               textAlign="center"
               textTransform="uppercase"
@@ -59,7 +59,7 @@ export default function Home() {
               Sign up now
             </Link>
             <Link
-              href="sing-in"
+              href="sign-in"
               bgColor="gray.700"
               textAlign="center"
               textTransform="uppercase"
