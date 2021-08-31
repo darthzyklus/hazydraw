@@ -35,7 +35,6 @@ const Input = {
     outline: {
       borderRadius: "none",
       borderWidth: "0.1px",
-      borderColor: "red.500",
     },
   },
 };
