@@ -21,4 +21,27 @@ const textStyles = {
     textDecoration: "none",
   },
 };
-export default extendTheme({ styles, fonts, textStyles });
+
+const Button = {
+  variants: {
+    solid: {
+      borderRadius: "0",
+    },
+  },
+};
+
+const Input = {
+  variants: {
+    outline: {
+      borderRadius: "none",
+      borderWidth: "0.1px",
+    },
+  },
+};
+
+export default extendTheme({
+  styles,
+  fonts,
+  textStyles,
+  components: { Button, Input },
+});
