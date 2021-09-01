@@ -44,6 +44,9 @@ const SignUpPage = () => {
     handleSubmit,
     register,
     reset,
+    getValues,
+    setValue,
+    setFocus,
     formState: { errors, isSubmitSuccessful },
   } = useForm<Schema>({ resolver: zodResolver(signupSchema) });
 
@@ -60,21 +63,36 @@ const SignUpPage = () => {
   };
 
   const onSubmit = (values: IFormValues) => {
-    // const { email, password } = values;
-    // console.log(typeof email, typeof password);
     setLoading(true);
-    createUser(values).then((res) => {
-      console.log(res.user.id);
-      setLoading(false);
-      toast({
-        position: "bottom",
-        title: "Account created.",
-        description: "We've created your account for you.",
-        status: "success",
-        duration: 5000,
-        isClosable: true,
+    const { email } = getValues();
+    try {
+      createUser(values).then((res) => {
+        setLoading(false);
+        if (res.error) {
+          setValue("email", email, { shouldValidate: true });
+          setFocus("email");
+          toast({
+            position: "bottom",
+            title: "Unable to create.",
+            description: res.error.message,
+            status: "error",
+            duration: 5000,
+            isClosable: true,
+          });
+        } else {
+          toast({
+            position: "bottom",
+            title: "Account created.",
+            description: "We've created your account for you.",
+            status: "success",
+            duration: 5000,
+            isClosable: true,
+          });
+        }
       });
-    });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
